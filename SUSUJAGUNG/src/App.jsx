@@ -106,7 +106,7 @@ const PRODUCTS = [
     desc: "Rasa jagung manis alami tanpa tambahan rasa. Fresh & sehat!",
     badge: "Best Seller",
     // sample srcs: bisa pakai path relatif ke /public atau url CDN
-    img: "/product/susujagung.png"
+    img: "/product/original.png"
   },
   {
     id: 2,
