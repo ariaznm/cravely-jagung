@@ -76,22 +76,19 @@ const STYLES = `
   /* product image box (responsive) */
   .product-img {
     width: 100%;
-    height: 160px;
     overflow: hidden;
-    border-radius: 12px 12px 0 0;
-    background: #fff8d6;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 20px 20px 0 0; /* match card radius so image touches edges */
+    display: block;
+    background: transparent; /* remove inner bg so image is edge-to-edge */
   }
   .product-img img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;            /* keep natural aspect ratio, no cropping */
     display: block;
+    object-fit: contain;     /* safe fallback if browser applies object-fit */
   }
   @media (max-width: 760px) {
-    .product-img { height: 220px; }
+    .product-img { /* no forced height on small screens either */ }
   }
 
   /* small utility to remove gaps for full-bleed sections that should not have inner background spacing */
@@ -118,7 +115,7 @@ const PRODUCTS = [
     emoji: "🍫",
     color: "#8B5E3C",
     desc: "Perpaduan susu jagung dengan cokelat premium. Creamy & rich!",
-    img: "/product/susujagung.png"
+    img: "/product/coco.png"
   },
   // tambahkan produk lain dengan field img: "/images/nama-file.jpg"
 ];
