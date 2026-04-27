@@ -109,7 +109,7 @@ const PRODUCTS = [
     desc: "Rasa jagung manis alami tanpa tambahan rasa. Fresh & sehat!",
     badge: "Best Seller",
     // sample srcs: bisa pakai path relatif ke /public atau url CDN
-    img: "/src/assets/product/susujagung.png"
+    img: "/product/susujagung.png"
   },
   {
     id: 2,
@@ -118,7 +118,7 @@ const PRODUCTS = [
     emoji: "🍫",
     color: "#8B5E3C",
     desc: "Perpaduan susu jagung dengan cokelat premium. Creamy & rich!",
-    img: "/src/assets/product/susujagung.png"
+    img: "/product/susujagung.png"
   },
   // tambahkan produk lain dengan field img: "/images/nama-file.jpg"
 ];
@@ -204,7 +204,7 @@ function Navbar({ cartCount, onCartClick }) {
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
           <a href="#hero" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 12 }}>
             <img
-              src="/src/assets/product/logo.png"
+              src="/product/logo.png"
               alt="CRAVELY logo"
               style={{ width: 50, height: 67, objectFit: "contain", display: "block" }}
 
