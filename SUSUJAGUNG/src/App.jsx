@@ -72,7 +72,7 @@ const STYLES = `
   @media (max-width: 760px) {
     .products-grid { grid-template-columns: 1fr; }
   }
-
+ght: 0 !important; }
   /* product image box (responsive) */
   .product-img {
     width: 100%;
@@ -92,7 +92,7 @@ const STYLES = `
   }
 
   /* small utility to remove gaps for full-bleed sections that should not have inner background spacing */
-  .no-gutter { padding-left: 0 !important; padding-right: 0 !important; }
+  .no-gutter { padding-left: 0 !important; padding-ri
 `;
 
 // ── DATA ──────────────────────────────────────────────────────
@@ -129,46 +129,7 @@ const FAQS = [
 
 const formatRupiah = (n) => "Rp " + n.toLocaleString("id-ID");
 
-// ── CART CONTEXT via state prop-drilling ──────────────────────
-function CartIcon({ count, onClick }) {
-  return (
-    <button onClick={onClick} style={{
-      position: "relative",
-      background: "var(--yellow)",
-      border: "none",
-      width: 44,
-      height: 44,
-      borderRadius: "50%",
-      cursor: "pointer",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      fontSize: 20,
-      flexShrink: 0,
-      transition: "all 0.2s"
-    }}>
-      🛒
-      {count > 0 && (
-        <span style={{
-          position: "absolute",
-          top: -4,
-          right: -4,
-          background: "var(--orange)",
-          color: "white",
-          width: 20,
-          height: 20,
-          borderRadius: "50%",
-          fontSize: 11,
-          fontWeight: 700,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontFamily: "'Baloo 2', cursive"
-        }}>{count}</span>
-      )}
-    </button>
-  );
-}
+/* Cart context removed: now using CartDrawer component directly in App */
 
 // ── NAVBAR ────────────────────────────────────────────────────
 function Navbar({ cartCount, onCartClick }) {
@@ -193,9 +154,9 @@ function Navbar({ cartCount, onCartClick }) {
       <nav style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
         background: scrolled ? "rgba(255,251,239,0.97)" : "transparent",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
+     
         boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.08)" : "none",
-        transition: "all 0.3s",
+     
         padding: "0 24px",
       }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
@@ -223,7 +184,41 @@ function Navbar({ cartCount, onCartClick }) {
                 >{l.label}</a>
               ))}
             </div>
-            <CartIcon count={cartCount} onClick={onCartClick} />
+            <button onClick={onCartClick} style={{
+              position: "relative",
+              background: "var(--yellow)",
+              border: "none",
+              width: 44,
+              height: 44,
+              borderRadius: "50%",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 20,
+              flexShrink: 0,
+              transition: "all 0.2s"
+            }}>
+              🛒
+              {cartCount > 0 && (
+                <span style={{
+                  position: "absolute",
+                  top: -4,
+                  right: -4,
+                  background: "var(--orange)",
+                  color: "white",
+                  width: 20,
+                  height: 20,
+                  borderRadius: "50%",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontFamily: "'Baloo 2', cursive"
+                }}>{cartCount}</span>
+              )}
+            </button>
             <button onClick={() => setOpen(!open)} style={{
               background: "none", border: "none", cursor: "pointer",
               fontSize: 24, display: "none", color: "var(--dark)"
@@ -263,26 +258,21 @@ function Navbar({ cartCount, onCartClick }) {
 function Hero({ onShopClick }) {
   return (
     <section id="hero" style={{
-      minHeight: "100vh", display: "flex", alignItems: "center",
+      minHeight: "150vh", display: "flex", alignItems: "center",
       background: "linear-gradient(135deg, #FFFBEF 0%, #FFF3C4 50%, #FFE8A0 100%)",
-      padding: "100px 24px 60px", position: "relative", overflow: "hidden"
-    }}>
-      {/* decorative corn blobs */}
-      {["10%,15%", "85%,10%", "5%,70%", "90%,75%"].map((pos, i) => {
-        const [left, top] = pos.split(",");
-        return (
-          <div key={i} style={{
-            position: "absolute", left, top,
-            fontSize: [80, 60, 50, 70][i],
-            opacity: 0.12,
-            transform: `rotate(${[15, -20, 10, -15][i]}deg)`,
-            pointerEvents: "none"
-          }}>🌽</div>
-        );
-      })}
+      padding: "100px 24px 60px", position: "relative", overflow: "hidden", flexWrap: "wrap", marginTop: -60 /* compensate for fixed navbar height */
 
-      <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", gap: 60, flexWrap: "wrap" }}>
-        <div style={{ flex: "1 1 380px" }}>
+    }}>
+
+
+      <div style={{ maxWidth: 1100, margin: "auto auto", display: "flex", alignItems: "center", gap: 60, flexWrap: "wrap" }}>
+        <div style={{ 
+          flex: "1 1 380px", 
+          display: "flex", 
+          flexDirection: "column", 
+          alignItems: "center", /* Bikin elemen ke tengah secara horizontal */
+          textAlign: "center"   /* Bikin teks jadi rata tengah */
+        }}>
           <div style={{
             display: "inline-flex", alignItems: "center", gap: 8,
             background: "var(--green)", color: "white",
@@ -311,7 +301,7 @@ function Hero({ onShopClick }) {
             Nikmati kesegaran susu jagung alami yang dibuat dari jagung pilihan berkualitas tinggi. Setiap tegukan memberikan rasa manis alami, kaya nutrisi, dan tanpa bahan pengawet.
           </p>
 
-          <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: 16, flexWrap: "wrap", justifyContent: "center" }}> {/* justifyContent: "center" biar tombol ke tengah */}
             <button className="btn-primary" onClick={onShopClick} style={{ fontSize: 17, padding: "14px 32px" }}>
               🛒 Order Sekarang
             </button>
@@ -320,7 +310,7 @@ function Hero({ onShopClick }) {
             </a>
           </div>
 
-          <div style={{ display: "flex", gap: 32, marginTop: 40 }}>
+          <div style={{ display: "flex", gap: 32, marginTop: 40, justifyContent: "center", flexWrap: "wrap" }}> {/* justifyContent: "center" biar stat bawah ke tengah */}
             {[["Premium Quality", "Proses higienis & standar tinggi"], ["100%", "Bahan Alami"], ["0%", "Pengawet"]].map(([n, l]) => (
               <div key={l}>
                 <div style={{ fontSize: 28, fontWeight: 800, color: "var(--orange)" }}>{n}</div>
@@ -331,15 +321,21 @@ function Hero({ onShopClick }) {
         </div>
 
         {/* hero visual */}
-        <div style={{ flex: "1 1 300px", display: "flex", justifyContent: "center" }}>
-          <div style={{
-            width: 320, height: 320, borderRadius: "50%",
-            background: "radial-gradient(circle, #FFD23F 0%, #FF9500 60%, #FF5A1F 100%)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            fontSize: 140, boxShadow: "0 30px 80px rgba(255,90,31,0.3)",
-            animation: "float 3s ease-in-out infinite"
-          }}>🌽</div>
-        </div>
+<div style={{ flex: "1 1 300px", display: "flex", justifyContent: "center" }}>
+          <img 
+            src="/product/original.png" 
+            alt="Cravely Corn"
+            style={{
+              width: "100%", 
+              maxWidth: "500px", /* Gua batesin dikit biar ga raksasa banget */
+              height: "auto", 
+              borderRadius: "24px", /* KUNCI RAPI: Ujungnya dilengkungin */
+              boxShadow: "0 20px 40px rgba(0,0,0,0.15)", /* Kasih bayangan biar ngambang dikit */
+              objectFit: "cover",
+              display: "block"
+            }} 
+          />
+         </div>
       </div>
 
       <style>{`
