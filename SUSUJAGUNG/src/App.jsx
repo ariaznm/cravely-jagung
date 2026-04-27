@@ -760,7 +760,7 @@ function Footer() {
         </div>
         <div>
           <div style={{ fontWeight: 700, fontSize: 16, color: "var(--yellow)", marginBottom: 12 }}>Kontak</div>
-          <a href="https://wa.me/6281234567890" target="_blank" rel="noreferrer" style={{ display: "block", color: "#a89a5a", textDecoration: "none", marginBottom: 8, fontSize: 14 }}
+          <a href="https://wa.me/6287849764103" target="_blank" rel="noreferrer" style={{ display: "block", color: "#a89a5a", textDecoration: "none", marginBottom: 8, fontSize: 14 }}
             onMouseEnter={e => e.target.style.color = "var(--yellow)"}
             onMouseLeave={e => e.target.style.color = "#a89a5a"}
           >💬 + 62 878-4976-4103</a>
@@ -790,7 +790,7 @@ function CartDrawer({ cart, onClose, onRemove, onQtyChange }) {
     const msg = encodeURIComponent(
       `Halo CRAVELY! Saya ingin order:\n\n${lines}\n\nTotal: ${formatRupiah(total)}\n\nMohon konfirmasi ketersediaan & pengiriman. Terima kasih! 🌽`
     );
-    window.open(`https://wa.me/6281234567890?text=${msg}`, "_blank");
+    window.open(`https://wa.me/6287849764103?text=${msg}`, "_blank");
   };
 
   return (
