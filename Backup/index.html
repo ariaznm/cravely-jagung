@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CRAVELY — Corn Milk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --corn: #FFD23F;
+    --corn-dark: #E6A817;
+    --corn-deep: #B87D0A;
+    --orange: #FF6B35;
+    --green: #4A8C3F;
+    --green-light: #EAF4E3;
+    --cream: #FFFBF0;
+    --brown: #3D2B1F;
+    --text: #1A1A1A;
+    --text-muted: #6B6B6B;
+    --white: #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+  a { text-decoration: none; color: inherit; }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: var(--brown);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 68px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 900;
+    color: var(--corn);
+    letter-spacing: -0.5px;
+  }
+  .nav-links {
+    display: flex; gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: #E0D6C8; font-size: 0.9rem; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--corn); }
+  .nav-cta {
+    background: var(--corn);
+    color: var(--brown);
+    padding: 0.55rem 1.4rem;
+    border-radius: 100px;
+    font-weight: 700; font-size: 0.85rem;
+    border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .nav-cta:hover { background: var(--corn-dark); }
+  .nav-cta:active { transform: scale(0.97); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background: var(--brown);
+    display: flex; align-items: center;
+    padding: 100px 5% 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--corn);
+    opacity: 0.06;
+  }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+    width: 100%;
+  }
+  .hero-eyebrow {
+    color: var(--corn);
+    font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 600; margin-bottom: 1.2rem;
+  }
+  .hero-h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    font-weight: 900;
+    color: #FFF;
+    line-height: 1.08;
+    margin-bottom: 1.5rem;
+  }
+  .hero-h1 span { color: var(--corn); }
+  .hero-desc {
+    color: #C5BAA8;
+    font-size: 1.05rem; line-height: 1.75;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+  .hero-features {
+    display: flex; gap: 2.5rem;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  .hero-feature h4 { color: #FFF; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+  .hero-feature p { color: #A09080; font-size: 0.82rem; line-height: 1.6; }
+  .hero-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--corn);
+    color: var(--brown);
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    font-weight: 700; font-size: 0.95rem;
+    border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .hero-btn:hover { background: var(--corn-dark); }
+  .hero-btn:active { transform: scale(0.97); }
+
+  /* hero images grid */
+  .hero-imgs {
+    display: grid; grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+  }
+  .hero-imgs img {
+    width: 100%; height: 100%;
+    object-fit: cover; border-radius: 16px;
+    transition: transform 0.4s ease;
+  }
+  .hero-imgs img:hover { transform: scale(1.03); }
+  .hero-imgs .img-main { grid-row: 1 / 3; height: 420px; }
+  .hero-imgs .img-sm { height: 200px; }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 90px 5%; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    text-align: center;
+    color: var(--corn-deep); font-size: 0.8rem; text-transform: uppercase;
+    letter-spacing: 0.2em; font-weight: 600; margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    text-align: center;
+    color: var(--brown);
+    margin-bottom: 0.6rem;
+    line-height: 1.15;
+  }
+  .section-title span { color: var(--corn-dark); }
+  .section-divider {
+    width: 64px; height: 4px;
+    background: var(--corn);
+    border-radius: 2px;
+    margin: 0 auto 3.5rem;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: #FFF; }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+  }
+  .about-text p { color: var(--text-muted); line-height: 1.8; font-size: 1.05rem; margin-bottom: 1rem; }
+  .about-text p strong { color: var(--text); }
+  .about-features {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem; margin-top: 2rem;
+  }
+  .about-feat {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    padding: 0.85rem; border-radius: 12px;
+    transition: background 0.2s;
+  }
+  .about-feat:hover { background: var(--green-light); }
+  .about-feat .icon { font-size: 1.6rem; flex-shrink: 0; }
+  .about-feat h4 { font-size: 0.95rem; font-weight: 600; color: var(--brown); margin-bottom: 0.2rem; }
+  .about-feat p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; margin: 0; }
+  .about-img-wrap {
+    background: linear-gradient(135deg, var(--green) 0%, var(--corn-dark) 100%);
+    border-radius: 20px; padding: 4px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+    position: relative;
+  }
+  .about-img-inner {
+    background: #FFF; border-radius: 16px;
+    overflow: hidden; height: 380px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .about-img-placeholder {
+    font-size: 7rem;
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  }
+  .about-img-placeholder span { font-size: 0.9rem; font-weight: 600; color: var(--text-muted); font-family: 'DM Sans', sans-serif; }
+  .about-badge {
+    position: absolute;
+    background: var(--corn); color: var(--brown);
+    font-weight: 700; font-size: 0.78rem;
+    padding: 0.45rem 1rem; border-radius: 100px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  }
+  .about-badge.top { top: -16px; left: 24px; }
+  .about-badge.bottom { bottom: -16px; right: 24px; background: var(--green); color: #FFF; }
+
+  /* stats */
+  .about-stats {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    gap: 1.5rem; margin-top: 4rem; text-align: center;
+  }
+  .stat-num { font-size: 2rem; font-weight: 700; color: var(--corn-dark); margin-bottom: 0.3rem; }
+  .stat-label { font-size: 0.82rem; color: var(--text-muted); }
+
+  /* ── PRODUCTS ── */
+  #product { background: var(--cream); }
+  .product-header { text-align: center; margin-bottom: 3.5rem; }
+  .special-product {
+    display: flex; justify-content: center; margin-bottom: 4rem;
+  }
+  .product-card {
+    background: #FFF;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #F0EAD8;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+  }
+  .product-card.special { max-width: 360px; border: 2px solid var(--corn); }
+  .product-img-wrap {
+    position: relative; overflow: hidden;
+    background: #F9F5EC;
+  }
+  .product-img-wrap img { width: 100%; object-fit: cover; transition: transform 0.4s; }
+  .product-card:hover .product-img-wrap img { transform: scale(1.05); }
+  .product-img-placeholder {
+    height: 280px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.5rem; font-size: 3.5rem;
+  }
+  .product-img-placeholder.tall { height: 340px; }
+  .product-img-placeholder span { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
+  .limited-badge {
+    position: absolute; top: 14px; left: 14px;
+    background: var(--orange); color: #FFF;
+    font-size: 0.72rem; font-weight: 700;
+    padding: 0.3rem 0.8rem; border-radius: 100px;
+  }
+  .hover-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(255,210,63,0.9); color: var(--brown);
+    font-size: 0.85rem; font-weight: 700; text-align: center;
+    padding: 0.6rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+  .product-card:hover .hover-label { transform: translateY(0); }
+  .product-info {
+    padding: 1.25rem 1.5rem;
+    display: flex; flex-direction: column; align-items: center; gap: 0.9rem;
+    text-align: center;
+  }
+  .product-info h4 { font-weight: 700; color: var(--brown); font-size: 1rem; }
+  .product-info .buy-btn {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--corn); color: var(--brown);
+    padding: 0.55rem 1.4rem; border-radius: 100px;
+    font-weight: 700; font-size: 0.82rem;
+    border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .product-info .buy-btn:hover { background: var(--corn-dark); }
+  .product-info .buy-btn:active { transform: scale(0.97); }
+
+  /* tabs */
+  .catalog-title { text-align: center; margin-bottom: 2rem; }
+  .catalog-title h3 { font-size: 1.5rem; font-weight: 700; color: var(--brown); margin-bottom: 0.5rem; }
+  .catalog-title p { color: var(--text-muted); font-size: 0.9rem; }
+  .tab-pills {
+    display: flex; justify-content: center; margin-bottom: 2.5rem;
+  }
+  .tab-inner {
+    background: #EDE8D8;
+    border-radius: 100px; padding: 6px;
+    display: flex; gap: 4px;
+  }
+  .tab-btn {
+    padding: 0.6rem 1.4rem; border-radius: 100px;
+    border: none; cursor: pointer;
+    font-size: 0.85rem; font-weight: 700;
+    color: #8A7A60;
+    background: transparent;
+    transition: background 0.25s, color 0.25s;
+  }
+  .tab-btn.active {
+    background: var(--corn-dark);
+    color: #FFF;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  }
+  .tab-desc { text-align: center; color: var(--text-muted); font-size: 0.88rem; margin-bottom: 2rem; }
+  .products-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* flavors section */
+  .flavors-row {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem;
+    margin: 2rem 0;
+  }
+  .flavor-pill {
+    background: #FFF; border: 1.5px solid var(--corn);
+    color: var(--brown); font-size: 0.82rem; font-weight: 600;
+    padding: 0.45rem 1.1rem; border-radius: 100px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .flavor-pill:hover { background: var(--corn); color: var(--brown); }
+
+  /* customize */
+  .customize-strip {
+    margin-top: 3rem; padding: 2.5rem;
+    background: var(--brown); border-radius: 20px;
+    text-align: center; color: #FFF;
+  }
+  .customize-strip h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .customize-strip p { color: #C5BAA8; font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .customize-btn {
+    background: var(--corn); color: var(--brown);
+    border: none; padding: 0.85rem 2.5rem;
+    border-radius: 100px; font-weight: 700; font-size: 0.95rem;
+    cursor: pointer; transition: background 0.2s, transform 0.1s;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .customize-btn:hover { background: var(--corn-dark); }
+  .customize-btn:active { transform: scale(0.97); }
+
+  /* ── DIFFERENTIATION TABLE ── */
+  #differentation { background: #FFF; }
+  .diff-table-wrap { overflow-x: auto; }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+  thead tr { background: var(--corn); }
+  thead th {
+    padding: 1rem 1.25rem; text-align: center;
+    font-weight: 700; color: var(--brown);
+    font-size: 0.9rem;
+  }
+  tbody td {
+    padding: 0.9rem 1.25rem; text-align: center;
+    border: 1px solid #EEE8D8;
+  }
+  tbody tr:nth-child(even) { background: var(--cream); }
+  tbody td:last-child { font-weight: 600; color: var(--green); }
+
+  /* ── IMPACT ── */
+  #impact { background: var(--cream); }
+  .impact-grid {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    gap: 1.25rem;
+  }
+  .impact-card {
+    background: #FFF; border-radius: 16px;
+    padding: 1.75rem; border: 1px solid #EEE8D8;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .impact-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+  .impact-card.wide { grid-column: 2 / 4; }
+  .impact-card h3 { font-size: 1rem; font-weight: 700; color: var(--brown); margin-bottom: 0.6rem; }
+  .impact-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+
+  /* ── GOAL ── */
+  #goal { background: #FFF; }
+  .goal-intro {
+    max-width: 760px; margin: 0 auto 3rem;
+    text-align: center; color: var(--text-muted);
+    font-size: 1.05rem; line-height: 1.8;
+  }
+  .goal-intro strong { color: var(--brown); }
+  .goals-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 1.5rem;
+  }
+  .goal-card {
+    background: var(--cream); border-radius: 16px;
+    padding: 2rem; border: 1px solid #EEE8D8;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .goal-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+  .goal-card .icon { font-size: 2.2rem; margin-bottom: 1rem; }
+  .goal-card h3 { font-weight: 700; color: var(--brown); font-size: 1rem; margin-bottom: 0.6rem; }
+  .goal-card p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.7; }
+
+  /* ── TEAM ── */
+  #team { background: var(--cream); }
+  .team-grid {
+    display: grid; grid-template-columns: repeat(5,1fr);
+    gap: 1.25rem; justify-items: center; margin-top: 2rem;
+  }
+  .team-card {
+    background: #FFF; border-radius: 16px;
+    padding: 1.5rem 1rem; text-align: center;
+    border: 1px solid #EEE8D8;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    width: 100%; max-width: 200px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .team-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+  .team-avatar {
+    width: 90px; height: 90px;
+    border-radius: 50%; margin: 0 auto 1rem;
+    object-fit: cover;
+    border: 3px solid var(--corn);
+  }
+  .team-avatar-placeholder {
+    width: 90px; height: 90px;
+    border-radius: 50%; margin: 0 auto 1rem;
+    background: var(--corn);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem; border: 3px solid var(--corn-dark);
+  }
+  .team-card h3 { font-weight: 700; color: var(--brown); font-size: 0.88rem; margin-bottom: 0.3rem; line-height: 1.4; }
+  .team-card .role { color: var(--corn-deep); font-weight: 700; font-size: 0.85rem; margin-bottom: 0.2rem; }
+  .team-card .subtitle { color: var(--text-muted); font-size: 0.78rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--brown);
+    color: #C5BAA8;
+    padding: 4rem 5% 2rem;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem; max-width: 1200px; margin: 0 auto 3rem;
+  }
+  .footer-brand h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--corn); font-size: 1.6rem; margin-bottom: 0.75rem;
+  }
+  .footer-brand p { font-size: 0.88rem; line-height: 1.75; }
+  .footer-col h3 { color: var(--corn); font-size: 1rem; font-weight: 700; margin-bottom: 1rem; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+  .footer-col a { font-size: 0.88rem; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--corn); }
+  .footer-contact { display: flex; flex-direction: column; gap: 0.75rem; }
+  .footer-contact-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.88rem; }
+  .footer-contact-item .fi-icon { font-size: 1rem; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1.5rem;
+    text-align: center; font-size: 0.82rem; color: #7A6A5A;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .footer-bottom strong { color: var(--corn); }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 9999;
+    background: rgba(20,10,0,0.7);
+    align-items: center; justify-content: center;
+    padding: 1rem;
+    backdrop-filter: blur(6px);
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: #FFFBF2; border-radius: 24px;
+    width: 100%; max-width: 560px;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.3);
+    position: relative;
+    animation: modalIn 0.3s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.9) translateY(30px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal-close {
+    position: absolute; top: 14px; right: 14px; z-index: 10;
+    background: rgba(255,255,255,0.8); border: none;
+    border-radius: 50%; width: 36px; height: 36px;
+    font-size: 1.1rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .modal-close:hover { background: #FFF; }
+  .modal-img {
+    width: 100%; height: 280px; object-fit: cover;
+    background: #F0EAD8;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5rem;
+  }
+  .modal-content { padding: 1.5rem; text-align: center; }
+  .modal-content h3 { font-size: 1.25rem; font-weight: 700; color: var(--brown); margin-bottom: 0.5rem; }
+  .modal-content p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.25rem; }
+  .modal-wa-btn {
+    background: var(--corn); color: var(--brown);
+    border: none; padding: 0.85rem 2.5rem;
+    border-radius: 100px; font-weight: 700; font-size: 0.9rem;
+    cursor: pointer; transition: background 0.2s;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .modal-wa-btn:hover { background: var(--corn-dark); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-imgs { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .impact-grid { grid-template-columns: 1fr 1fr; }
+    .impact-card.wide { grid-column: span 2; }
+    .goals-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: repeat(2,1fr); }
+    .about-stats { grid-template-columns: repeat(2,1fr); }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+  @media (max-width: 600px) {
+    nav .nav-links { display: none; }
+    .impact-grid { grid-template-columns: 1fr; }
+    .impact-card.wide { grid-column: span 1; }
+    .team-grid { grid-template-columns: repeat(2,1fr); }
+    .products-grid { grid-template-columns: 1fr; }
+    .about-features { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav>
+  <div class="nav-logo">🌽 CRAVELY</div>
+  <ul class="nav-links">
+    <li><a href="#product">Produk</a></li>
+    <li><a href="#about">Tentang</a></li>
+    <li><a href="#differentation">Perbandingan</a></li>
+    <li><a href="#impact">Manfaat</a></li>
+  </ul>
+  <button class="nav-cta" onclick="openWA('Halo CRAVELY, saya ingin memesan produk susu jagung!')">
+    💬 Pesan Sekarang
+  </button>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-bg-circle" style="width:700px;height:700px;top:-200px;right:-200px;"></div>
+  <div class="hero-bg-circle" style="width:400px;height:400px;bottom:-150px;left:-100px;"></div>
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">🌽 Fresh by Order · No Preservatives</p>
+      <h1 class="hero-h1">
+        <span>CRAVELY</span><br/>
+        Susu Jagung<br/>Kekinian & Sehat
+      </h1>
+      <p class="hero-desc">
+        Minuman susu jagung modern dengan berbagai varian rasa. Dibuat dari jagung segar pilihan, tanpa pengawet, fresh by order — untuk generasi muda yang ingin hidup sehat tanpa mengorbankan cita rasa.
+      </p>
+      <div class="hero-features">
+        <div class="hero-feature">
+          <h4>Fresh Daily</h4>
+          <p>Dibuat segar setiap hari, tanpa bahan pengawet.</p>
+        </div>
+        <div class="hero-feature">
+          <h4>7 Varian Rasa</h4>
+          <p>Original, Chocolate, Matcha, Taro, dan lebih banyak lagi.</p>
+        </div>
+      </div>
+      <button class="hero-btn" onclick="document.getElementById('product').scrollIntoView({behavior:'smooth'})">
+        Lihat Produk Kami ↓
+      </button>
+    </div>
+    <div class="hero-imgs">
+      <div class="img-main" style="background:#2A1E10;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:6rem;">🌽</div>
+      <div class="img-sm" style="background:#3A2810;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:3rem;">🥛</div>
+      <div class="img-sm" style="background:#1E2E1A;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:3rem;">🍵</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about">
+  <div class="section-inner">
+    <p class="section-tag">Tentang Kami</p>
+    <h2 class="section-title">Tentang <span>CRAVELY</span></h2>
+    <div class="section-divider"></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p><strong>CRAVELY</strong> adalah startup minuman berbasis susu jagung dengan berbagai varian rasa kekinian. Produk ini menggabungkan bahan lokal berkualitas, inovasi rasa modern, dan nilai kesehatan dalam satu botol yang praktis.</p>
+        <p>Lebih dari sekadar minuman, CRAVELY menghadirkan pengalaman minum yang menyehatkan, menyenangkan, dan ramah di kantong untuk semua kalangan — terutama generasi muda.</p>
+        <div class="about-features">
+          <div class="about-feat">
+            <span class="icon">🌿</span>
+            <div>
+              <h4>Bahan Alami</h4>
+              <p>Jagung segar pilihan tanpa bahan kimia berbahaya</p>
+            </div>
+          </div>
+          <div class="about-feat">
+            <span class="icon">⚡</span>
+            <div>
+              <h4>Kaya Nutrisi</h4>
+              <p>Sumber serat, vitamin B, dan antioksidan alami</p>
+            </div>
+          </div>
+          <div class="about-feat">
+            <span class="icon">🎨</span>
+            <div>
+              <h4>7 Varian Rasa</h4>
+              <p>Original, Chocolate, Matcha, Taro, Vanilla, Caramel, Cheese</p>
+            </div>
+          </div>
+          <div class="about-feat">
+            <span class="icon">📱</span>
+            <div>
+              <h4>Order Digital</h4>
+              <p>Pesan mudah melalui WhatsApp, Instagram, dan marketplace</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;">
+        <div class="about-img-wrap">
+          <div class="about-img-inner">
+            <div class="about-img-placeholder">
+              🌽
+              <span>CRAVELY Corn Milk</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-badge top">Fresh by Order</div>
+        <div class="about-badge bottom">No Preservatives</div>
+      </div>
+    </div>
+    <div class="about-stats">
+      <div><div class="stat-num">100%</div><div class="stat-label">Bahan Alami</div></div>
+      <div><div class="stat-num">0%</div><div class="stat-label">Bahan Pengawet</div></div>
+      <div><div class="stat-num">7+</div><div class="stat-label">Varian Rasa</div></div>
+      <div><div class="stat-num">100%</div><div class="stat-label">Fresh by Order</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRODUCTS ═══ -->
+<section id="product">
+  <div class="section-inner">
+    <p class="section-tag">Koleksi Kami</p>
+    <h2 class="section-title">Produk dari <span>CRAVELY</span></h2>
+    <div class="section-divider"></div>
+
+    <!-- Special -->
+    <div class="special-product">
+      <div class="product-card special" onclick="openModal('Signature Corn Milk','Produk unggulan CRAVELY — susu jagung original dengan tekstur creamy sempurna, manis alami dari jagung segar pilihan. Bestseller kami!','🌽')">
+        <div class="product-img-wrap">
+          <div class="product-img-placeholder tall">🌽<span>Signature Corn Milk</span></div>
+          <div class="limited-badge">Best Seller</div>
+          <div class="hover-label">Lihat Detail →</div>
+        </div>
+        <div class="product-info">
+          <h4>Signature Corn Milk</h4>
+          <button class="buy-btn">💬 Tanya Produk ini</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Catalog tabs -->
+    <div class="catalog-title">
+      <h3>Katalog Produk</h3>
+      <p>Pilih koleksi yang ingin kamu jelajahi — semua dibuat fresh setiap hari.</p>
+    </div>
+    <div class="tab-pills">
+      <div class="tab-inner">
+        <button class="tab-btn active" onclick="switchTab(0,this)">Varian Rasa</button>
+        <button class="tab-btn" onclick="switchTab(1,this)">Paket Bundle</button>
+        <button class="tab-btn" onclick="switchTab(2,this)">Event</button>
+      </div>
+    </div>
+
+    <div id="tab-0" class="tab-content">
+      <p class="tab-desc">Tujuh varian rasa kekinian untuk semua selera — dari yang klasik hingga yang adventurous.</p>
+      <div class="products-grid">
+        <div class="product-card" onclick="openModal('Original Sweet Corn','Rasa jagung manis alami yang creamy dan menyegarkan. Favorit semua kalangan, cocok untuk semua usia.','🌽')">
+          <div class="product-img-wrap"><div class="product-img-placeholder">🌽<span>Original Sweet Corn</span></div><div class="hover-label">Lihat Detail →</div></div>
+          <div class="product-info"><h4>Original Sweet Corn</h4><button class="buy-btn">💬 Tanya Produk</button></div>
+        </div>
+        <div class="product-card" onclick="openModal('Chocolate Corn','Perpaduan susu jagung creamy dengan cokelat premium yang kaya. Manis, gurih, dan nggak bikin bosen!','🍫')">
+          <div class="product-img-wrap"><div class="product-img-placeholder">🍫<span>Chocolate Corn</span></div><div class="hover-label">Lihat Detail →</div></div>
+          <div class="product-info"><h4>Chocolate Corn</h4><button class="buy-btn">💬 Tanya Produk</button></div>
+        </div>
+        <div class="product-card" onclick="openModal('Matcha Corn','Harmoni matcha Jepang premium dengan creamy susu jagung. Earthy, slightly bitter, perfectly balanced.','🍵')">
+          <div class="product-img-wrap"><div class="product-img-placeholder">🍵<span>Matcha Corn</span></div><div class="hover-label">Lihat Detail →</div></div>
+          <div class="product-info"><h4>Matcha Corn</h4><button class="buy-btn">💬 Tanya Produk</button></div>
+        </div>
+        <div class="product-card" onclick="openModal('Taro Corn','Rasa taro ungu yang lembut dan creamy berpadu dengan susu jagung manis. Instagram-worthy banget!','🟣')">
+          <div class="product-img-wrap"><div class="product-img-placeholder">🟣<span>Taro Corn</span></div><div class="hover-label">Lihat Detail →</div></div>
+          <div class="product-info"><h4>Taro Corn</h4><button class="buy-btn">💬 Tanya Produk</button></div>
+        </div>
+        <div class="product-card" onclick="openModal('Caramel Corn','Karamel butterscotch yang kaya berpadu dengan susu jagung segar. Manis, hangat, dan comforting.','🍮')">
+          <div class="product-img-wrap"><div class="product-img-placeholder">🍮<span>Caramel Corn</span></div><div class="hover-label">Lihat Detail →</div></div>
+          <div class="product-info"><h4>Caramel Corn</h4><button class="buy-btn">💬 Tanya Produk</button></div>
+        </div>
+        <div class="product-card" onclick="openModal('Cheese Corn','Kejutan savory! Susu jagung manis bertemu keju gurih. Unik, unexpectedly delicious, dan ketagihan.','🧀')">
+          <div class="product-img-wrap"><div class="product-img-placeholder">🧀<span>Cheese Corn</span></div><div class="hover-label">Lihat Detail →</div></div>
+          <div class="product-info"><h4>Cheese Corn</h4><button class="buy-btn">💬 Tanya Produk</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-1" class="tab-content" style="display:none;">
+      <p class="tab-desc">Hemat lebih banyak dengan paket bundle — cocok untuk berbagi atau stok mingguan.</p>
+      <div class="products-grid">
+        <div class="product-card" onclick="openModal('Bundle 3 Botol','Pilih 3 varian rasa favoritmu! Hemat 10% dari harga satuan. Cocok untuk dicoba bersama teman atau keluarga.','🧃')">
+          <div class="product-img-wrap"><div class="product-img-placeholder">🧃<span>Bundle 3 Botol</span></div><div class="hover-label">Lihat Detail →</div></div>
+          <div class="product-info"><h4>Bundle 3 Botol</h4><button class="buy-btn">💬 Tanya Produk</button></div>
+        </div>
+        <div class="product-card" onclick="openModal('Bundle 6 Botol','Stok mingguan terbaik! Pilih 6 varian sesukamu dan hemat 15%. Free ongkir untuk area Denpasar.','📦')">
+          <div class="product-img-wrap"><div class="product-img-placeholder">📦<span>Bundle 6 Botol</span></div><div class="hover-label">Lihat Detail →</div></div>
+          <div class="product-info"><h4>Bundle 6 Botol</h4><button class="buy-btn">💬 Tanya Produk</button></div>
+        </div>
+        <div class="product-card" onclick="openModal('CRAVELY Box All-Flavor','Coba semua 7 varian sekaligus! Perfect sebagai hadiah atau untuk kenalan pertama dengan CRAVELY.','🎁')">
+          <div class="product-img-wrap"><div class="product-img-placeholder">🎁<span>All-Flavor Box</span></div><div class="hover-label">Lihat Detail →</div></div>
+          <div class="product-info"><h4>CRAVELY Box All-Flavor</h4><button class="buy-btn">💬 Tanya Produk</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-2" class="tab-content" style="display:none;">
+      <div style="display:flex;flex-direction:column;align-items:center;padding:3rem 0;text-align:center;">
+        <div style="font-size:5rem;margin-bottom:1rem;">🎪</div>
+        <h3 style="color:var(--brown);font-size:1.3rem;font-weight:700;margin-bottom:0.5rem;">Coming Soon!</h3>
+        <p style="color:var(--text-muted);max-width:400px;font-size:0.9rem;line-height:1.7;margin-bottom:1.5rem;">Pantau terus untuk koleksi event eksklusif dan promo spesial yang akan segera hadir!</p>
+        <div style="display:flex;gap:8px;justify-content:center;margin-bottom:1.5rem;">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--corn);animation:pulse 1.2s ease infinite;"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--corn);animation:pulse 1.2s ease 0.25s infinite;"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--corn);animation:pulse 1.2s ease 0.5s infinite;"></div>
+        </div>
+        <button class="nav-cta" onclick="openWA('Halo CRAVELY! Saya ingin mendapatkan info terbaru tentang event yang akan datang!')">💬 Beritahu Saya via WhatsApp</button>
+      </div>
+    </div>
+
+    <!-- Customize strip -->
+    <div class="customize-strip">
+      <h3>✨ Kustomisasi Produk</h3>
+      <p>Ingin varian rasa atau ukuran khusus? Kami siap membantu membuat CRAVELY versimu!</p>
+      <button class="customize-btn" onclick="openWA('Halo CRAVELY! Saya ingin mendiskusikan kustomisasi produk susu jagung.')">✨ Customize Order</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DIFFERENTATION ═══ -->
+<section id="differentation">
+  <div class="section-inner">
+    <p class="section-tag">Keunggulan</p>
+    <h2 class="section-title">Apa yang Membuat <span>CRAVELY</span> Unik?</h2>
+    <div class="section-divider"></div>
+    <div class="diff-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Aspek</th>
+            <th>Minuman Jagung Biasa</th>
+            <th>CRAVELY</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bahan Baku</td>
+            <td>Jagung biasa / instan</td>
+            <td>Jagung segar pilihan</td>
+          </tr>
+          <tr>
+            <td>Pengawet</td>
+            <td>Menggunakan pengawet</td>
+            <td>Tanpa pengawet, 100% alami</td>
+          </tr>
+          <tr>
+            <td>Varian Rasa</td>
+            <td>1–2 rasa saja</td>
+            <td>7 varian rasa kekinian</td>
+          </tr>
+          <tr>
+            <td>Produksi</td>
+            <td>Massal, stok lama</td>
+            <td>Fresh by order setiap hari</td>
+          </tr>
+          <tr>
+            <td>Segmentasi Pasar</td>
+            <td>Umum / tradisional</td>
+            <td>Gen Z, Milenial, Komunitas Healthy Lifestyle</td>
+          </tr>
+          <tr>
+            <td>Pemesanan</td>
+            <td>Toko fisik saja</td>
+            <td>WhatsApp, Instagram, Website, Marketplace</td>
+          </tr>
+          <tr>
+            <td>Posisi Merek</td>
+            <td>Produk minuman biasa</td>
+            <td>Healthy Lifestyle Brand berbasis Bahan Lokal</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ IMPACT ═══ -->
+<section id="impact">
+  <div class="section-inner">
+    <p class="section-tag">Manfaat</p>
+    <h2 class="section-title">Nilai dan Manfaat <span>CRAVELY</span></h2>
+    <div class="section-divider"></div>
+    <div class="impact-grid">
+      <div class="impact-card">
+        <h3>🌿 Sehat & Alami</h3>
+        <p>Terbuat dari jagung segar pilihan yang kaya serat, vitamin B, dan antioksidan. Tanpa pengawet dan bahan kimia berbahaya.</p>
+      </div>
+      <div class="impact-card">
+        <h3>⚡ Sumber Energi</h3>
+        <p>Karbohidrat kompleks dari jagung memberikan energi tahan lama — cocok untuk pelajar, mahasiswa, dan pekerja aktif.</p>
+      </div>
+      <div class="impact-card">
+        <h3>🎨 7 Varian Rasa</h3>
+        <p>Dari original hingga matcha, taro, dan cheese — selalu ada rasa yang sesuai moodmu hari ini.</p>
+      </div>
+      <div class="impact-card">
+        <h3>💰 Harga Terjangkau</h3>
+        <p>Kualitas premium dengan harga yang ramah di kantong pelajar dan mahasiswa mulai dari Rp6.000.</p>
+      </div>
+      <div class="impact-card wide">
+        <h3>🌱 Dukung Produk Lokal</h3>
+        <p>CRAVELY menggunakan jagung lokal Indonesia berkualitas tinggi, mendukung petani lokal sambil memberikan produk terbaik untuk konsumen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GOAL ═══ -->
+<section id="goal">
+  <div class="section-inner">
+    <p class="section-tag">Visi</p>
+    <h2 class="section-title">Tujuan dari <span>CRAVELY</span></h2>
+    <div class="section-divider"></div>
+    <p class="goal-intro">
+      Kami mendirikan <strong>CRAVELY</strong> karena kami melihat bahwa banyak anak muda ingin hidup sehat, tetapi pilihan minuman sehat di sekitar mereka terbatas dan tidak menarik. Dengan memanfaatkan jagung lokal yang kaya nutrisi, kami ingin memberikan solusi minuman sehat yang tetap enak, kekinian, dan mudah dijangkau.
+    </p>
+    <div class="goals-grid">
+      <div class="goal-card">
+        <div class="icon">📈</div>
+        <h3>Tingkatkan Kapasitas Bisnis</h3>
+        <p>Mengembangkan operasional dan strategi bisnis yang lebih baik untuk melayani lebih banyak pelanggan di seluruh Indonesia.</p>
+      </div>
+      <div class="goal-card">
+        <div class="icon">🎯</div>
+        <h3>Dapatkan Bimbingan</h3>
+        <p>Memperoleh mentoring dari para ahli dalam pengembangan bisnis food & beverage yang berkelanjutan dan berdampak.</p>
+      </div>
+      <div class="goal-card">
+        <div class="icon">🌱</div>
+        <h3>Ciptakan Dampak Nyata</h3>
+        <p>Mendorong gaya hidup sehat di kalangan generasi muda sekaligus mendukung petani jagung lokal Indonesia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TEAM ═══ -->
+<section id="team">
+  <div class="section-inner">
+    <p class="section-tag">Tim Kami</p>
+    <h2 class="section-title">Tim <span>CRAVELY</span></h2>
+    <div class="section-divider"></div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar-placeholder">👑</div>
+        <h3>Ni Made Artya Putri Andini Gunawan</h3>
+        <p class="role">CEO</p>
+        <p class="subtitle">Visionary Leader</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar-placeholder">📣</div>
+        <h3>Jaqlien Enjelika Surya</h3>
+        <p class="role">Marketing</p>
+        <p class="subtitle">Growth Igniter</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar-placeholder">⚙️</div>
+        <h3>Ni Putu Pudja Sari Arlina</h3>
+        <p class="role">Tech Lead</p>
+        <p class="subtitle">Digital Architect</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar-placeholder">🎨</div>
+        <h3>Tim Desainer</h3>
+        <p class="role">Creative</p>
+        <p class="subtitle">Visual Storyteller</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar-placeholder">📦</div>
+        <h3>Tim Operasional</h3>
+        <p class="role">Operations</p>
+        <p class="subtitle">Fulfillment Expert</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h2>🌽 CRAVELY</h2>
+      <p>Minuman susu jagung sehat dengan berbagai varian rasa kekinian. Fresh by order, tanpa pengawet, untuk gaya hidup yang lebih baik.</p>
+    </div>
+    <div class="footer-col">
+      <h3>Menu</h3>
+      <ul>
+        <li><a href="#product">Produk</a></li>
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#differentation">Perbandingan</a></li>
+        <li><a href="#impact">Manfaat</a></li>
+        <li><a href="#goal">Tujuan</a></li>
+        <li><a href="#team">Tim CRAVELY</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Hubungi Kami</h3>
+      <div class="footer-contact">
+        <div class="footer-contact-item"><span class="fi-icon">📸</span><a href="https://www.instagram.com/cravely.official/" target="_blank">@cravely.official</a></div>
+        <div class="footer-contact-item"><span class="fi-icon">📱</span><a href="tel:+6281234567890">+62 812-3456-7890</a></div>
+        <div class="footer-contact-item"><span class="fi-icon">📍</span><span>Denpasar, Bali, Indonesia</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © <span id="year"></span> <strong>CRAVELY</strong>. Semua Hak Cipta Dilindungi. Made with 🌽 in Bali.
+  </div>
+</footer>
+
+<!-- ═══ PRODUCT MODAL ═══ -->
+<div class="modal-overlay" id="productModal" onclick="closeModal(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('productModal').classList.remove('open')">✕</button>
+    <div class="modal-img" id="modalImg"></div>
+    <div class="modal-content">
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+      <button class="modal-wa-btn" id="modalWaBtn">💬 Tanya via WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.4); }
+  }
+</style>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  function openWA(msg) {
+    const phone = '6282144603278';
+    window.open('https://wa.me/' + phone + '?text=' + encodeURIComponent(msg), '_blank');
+  }
+
+  function openModal(title, desc, emoji) {
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalDesc').textContent = desc;
+    document.getElementById('modalImg').textContent = emoji;
+    document.getElementById('modalImg').style.fontSize = '5rem';
+    document.getElementById('modalImg').style.display = 'flex';
+    document.getElementById('modalImg').style.alignItems = 'center';
+    document.getElementById('modalImg').style.justifyContent = 'center';
+    document.getElementById('modalWaBtn').onclick = function() {
+      openWA('Halo CRAVELY, saya ingin bertanya terkait produk: ' + title);
+    };
+    document.getElementById('productModal').classList.add('open');
+  }
+
+  function closeModal(e) {
+    if (e.target === document.getElementById('productModal')) {
+      document.getElementById('productModal').classList.remove('open');
+    }
+  }
+
+  function switchTab(idx, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + idx).style.display = 'block';
+    btn.classList.add('active');
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') document.getElementById('productModal').classList.remove('open');
+  });
+</script>
+</body>
+</html>
