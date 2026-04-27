@@ -258,9 +258,10 @@ function Navbar({ cartCount, onCartClick }) {
 function Hero({ onShopClick }) {
   return (
     <section id="hero" style={{
-      minHeight: "150vh", display: "flex", alignItems: "center",
+     
+      minHeight: "100vh", display: "flex", alignItems: "center",
       background: "linear-gradient(135deg, #FFFBEF 0%, #FFF3C4 50%, #FFE8A0 100%)",
-      padding: "100px 24px 60px", position: "relative", overflow: "hidden", flexWrap: "wrap", marginTop: -60 /* compensate for fixed navbar height */
+      padding: "100px 24px 60px", position: "relative", overflow: "auto", flexWrap: "wrap", marginTop: -60 /* compensate for fixed navbar height */
 
     }}>
 
