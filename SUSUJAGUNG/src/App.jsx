@@ -153,9 +153,9 @@ function Navbar({ cartCount, onCartClick }) {
     <>
       <nav style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-        background: scrolled ? "rgba(255,251,239,0.97)" : "transparent",
+        background: "var(--cream)",
      
-        boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.08)" : "none",
+        boxShadow: "none",
      
         padding: "0 24px",
       }}>
@@ -261,7 +261,7 @@ function Hero({ onShopClick }) {
      
       minHeight: "100vh", display: "flex", alignItems: "center",
       background: "linear-gradient(135deg, #FFFBEF 0%, #FFF3C4 50%, #FFE8A0 100%)",
-      padding: "100px 24px 60px", position: "relative", overflow: "auto", flexWrap: "wrap", marginTop: -60 /* compensate for fixed navbar height */
+      padding: "100px 24px 60px", position: "relative", overflow: "auto", flexWrap: "wrap", marginTop: -20 /* compensate for fixed navbar height */
 
     }}>
 
