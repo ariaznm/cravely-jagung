@@ -100,22 +100,31 @@ const PRODUCTS = [
   {
     id: 1,
     name: "Original Sweet Corn",
-    price: 15000,
+    price: 8000,
     emoji: "🌽",
     color: "#FFD23F",
     desc: "Rasa jagung manis alami tanpa tambahan rasa. Fresh & sehat!",
     badge: "Best Seller",
     // sample srcs: bisa pakai path relatif ke /public atau url CDN
-    img: "/product/original.png"
+    img: "/product/sweet.jpg"
   },
   {
     id: 2,
     name: "Chocolate Corn",
-    price: 17000,
+    price: 10000,
     emoji: "🍫",
     color: "#8B5E3C",
     desc: "Perpaduan susu jagung dengan cokelat premium. Creamy & rich!",
-    img: "/product/coco.png"
+    img: "/product/coklat.jpg"
+  },
+    {
+    id: 3,
+    name: "Matcha Corn",
+    price: 10000,
+    emoji: "🍃",
+    color: "#8B5E3C",
+    desc: "Perpaduan susu jagung dengan cokelat premium. Creamy & rich!",
+    img: "/product/matcha.jpg"
   },
   // tambahkan produk lain dengan field img: "/images/nama-file.jpg"
 ];
@@ -324,7 +333,7 @@ function Hero({ onShopClick }) {
         {/* hero visual */}
 <div style={{ flex: "1 1 300px", display: "flex", justifyContent: "center" }}>
           <img 
-            src="/product/original.png" 
+            src="/product/cover.jpeg" 
             alt="Cravely Corn"
             style={{
               width: "100%", 
@@ -605,7 +614,7 @@ function Benefits() {
 function FAQ() {
   // Hubungi Kami (menggantikan FAQ)
   const waMessage = encodeURIComponent("Halo CRAVELY, saya ingin pesan susu jagung. Mohon info ketersediaan & pengiriman. Terima kasih!");
-  const waLink = `https://wa.me/6287849764103?text=${waMessage}`;
+  const waLink = `https://wa.me/6287885387472?text=${waMessage}`;
   const igLink = "https://instagram.com/cravely.official";
   const mailLink = "mailto:hello@cravely.id";
   const mapsLink = "https://www.google.com/maps/place/Primakara+University/@-8.6923198,115.2413429,15.75z/data=!4m6!3m5!1s0x2dd241aab844be9f:0x7bfef0260053104e!8m2!3d-8.6896993!4d115.2377738!16s%2Fg%2F1q62f9z3f?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D";
@@ -648,7 +657,7 @@ function FAQ() {
                 }}>💬</div>
                 <div style={{ flex: 1, textAlign: "left" }}>
                   <div style={{ fontWeight: 800, color: "var(--dark)" }}>Order Via WhatsApp</div>
-                  <div style={{ fontSize: 13, color: "var(--muted)" }}>+ 62 878-4976-4103</div>
+                  <div style={{ fontSize: 13, color: "var(--muted)" }}>+ 62 878-8538-7472</div>
                 </div>
               
               </a>
@@ -748,6 +757,7 @@ function Footer() {
             Susu jagung sehat & kekinian. Dibuat fresh by order dari jagung lokal pilihan tanpa pengawet.
           </p>
         </div>
+
         <div>
           <div style={{ fontWeight: 700, fontSize: 16, color: "var(--yellow)", marginBottom: 12 }}>Menu</div>
           {["#about|Tentang", "#produk|Produk", "#manfaat|Manfaat", "#hubungi|Hubungi Kami"].map(s => {
@@ -760,10 +770,10 @@ function Footer() {
         </div>
         <div>
           <div style={{ fontWeight: 700, fontSize: 16, color: "var(--yellow)", marginBottom: 12 }}>Kontak</div>
-          <a href="https://wa.me/6287849764103" target="_blank" rel="noreferrer" style={{ display: "block", color: "#a89a5a", textDecoration: "none", marginBottom: 8, fontSize: 14 }}
+          <a href="https://wa.me/6287885387472" target="_blank" rel="noreferrer" style={{ display: "block", color: "#a89a5a", textDecoration: "none", marginBottom: 8, fontSize: 14 }}
             onMouseEnter={e => e.target.style.color = "var(--yellow)"}
             onMouseLeave={e => e.target.style.color = "#a89a5a"}
-          >💬 + 62 878-4976-4103</a>
+          >💬+ 62 878-8538-7472</a>
           <a href="mailto:hello@cravely.id" style={{ display: "block", color: "#a89a5a", textDecoration: "none", marginBottom: 8, fontSize: 14 }}
             onMouseEnter={e => e.target.style.color = "var(--yellow)"}
             onMouseLeave={e => e.target.style.color = "#a89a5a"}
@@ -790,7 +800,7 @@ function CartDrawer({ cart, onClose, onRemove, onQtyChange }) {
     const msg = encodeURIComponent(
       `Halo CRAVELY! Saya ingin order:\n\n${lines}\n\nTotal: ${formatRupiah(total)}\n\nMohon konfirmasi ketersediaan & pengiriman. Terima kasih! 🌽`
     );
-    window.open(`https://wa.me/6287849764103?text=${msg}`, "_blank");
+    window.open(`https://wa.me/6287885387472?text=${msg}`, "_blank");
   };
 
   return (
