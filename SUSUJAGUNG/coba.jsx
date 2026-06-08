@@ -366,7 +366,132 @@ function About() {
     { icon: "✨", title: "Always Fresh", desc: "Dibuat fresh setiap hari untuk kesegaran maksimal" },
   ];
 
+  return (
+    <section id="about" style={{ background: "white" }}>
+      <div className="container">
+        <h2 className="section-title">Tentang <span>CRAVELY</span></h2>
+        <div className="divider" />
 
+        {/* Flow: gambar → deskripsi → 3 fitur (emoji di atas, title, desc); shadow lebih ringan + animasi halus */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 28, alignItems: "center" }}>
+
+          {/* image */}
+          <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+            <div style={{
+              background: "linear-gradient(135deg, #FFD23F, #FF5A1F)",
+              borderRadius: 24, padding: 8, display: "flex", alignItems: "center", justifyContent: "center",
+              maxWidth: 760, width: "100%"
+            }}>
+              <img
+                src="/images/about-corn.jpg"
+                alt="CRAVELY Susu Jagung"
+                style={{
+                  width: "100%",
+                  maxWidth: 720,
+                  height: "auto",
+                  borderRadius: 20,
+                  display: "block",
+                  objectFit: "cover"
+                }}
+                onError={(e) => { e.currentTarget.style.display = "none"; }}
+              />
+            </div>
+          </div>
+
+          {/* centered description */}
+          <div style={{ maxWidth: 820, textAlign: "center", color: "var(--muted)" }}>
+            <p style={{ fontSize: 18, lineHeight: 1.8, marginBottom: 12 }}>
+              <strong style={{ color: "var(--dark)" }}>CRAVELY</strong> adalah brand minuman susu jagung yang menghadirkan kesegaran dan kelezatan dari jagung alami pilihan. kami berkomitmen untuk menyajikan produk sehat, berkualitas dan penuh nutrisi untuk gaya hidup modern Anda
+            </p>
+
+          </div>
+
+          {/* features: emoji above, then title, then desc; lighter shadow and subtle pop animation */}
+          <div style={{
+            width: "100%",
+            maxWidth: 880,
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: 16,
+            marginTop: 4
+          }}>
+            {vals.map(v => (
+              <div key={v.title} className="feature-card" style={{
+                background: "white",
+                borderRadius: 16,
+                padding: 22,
+                boxShadow: "0 10px 24px rgba(17,15,11,0.06)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                textAlign: "center",
+                border: "1px solid rgba(0,0,0,0.03)",
+                transition: "transform 0.28s ease, box-shadow 0.28s ease"
+              }}>
+                {/* icon: no inner shadow/box, emoji sits plain above title */}
+                <div className="feature-icon" style={{
+                  fontSize: 40,
+                  marginBottom: 12,
+                  lineHeight: 1,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  background: "transparent",
+                  boxShadow: "none",
+                  width: "auto",
+                  height: "auto"
+                }}>
+                  {v.icon}
+                </div>
+                <div style={{ fontWeight: 800, color: "var(--dark)", marginBottom: 8 }}>{v.title}</div>
+                <div style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.5 }}>{v.desc}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* highlight box (unchanged) */}
+          <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+            <div role="note" aria-label="Informasi produk" style={{
+              maxWidth: 820,
+              width: "100%",
+              background: "linear-gradient(90deg, rgba(255,210,63,0.12), rgba(255,210,63,0.04))",
+              border: "1px solid rgba(255,210,63,0.35)",
+              padding: "18px 22px",
+              borderRadius: 14,
+              boxShadow: "0 8px 30px rgba(255,170,0,0.06)"
+            }}>
+              <p style={{ margin: 0, fontSize: 17, lineHeight: 1.8, color: "var(--dark)", textAlign: "center" }}>
+                <strong style={{ color: "var(--orange)" }}>Setiap botol CRAVELY</strong> diproduksi dengan standar kebersihan tinggi dan penuh cinta — memberikan manfaat nutrisi dari jagung yang kaya akan serat, vitamin, dan mineral untuk kesehatan Anda dan keluarga.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        {/* small CSS for hover/animation */}
+        <style>{`
+          .feature-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 12px 30px rgba(17,15,11,0.08);
+          }
+          .feature-icon {
+            transition: transform 280ms ease;
+          }
+          .feature-card:hover .feature-icon {
+            transform: translateY(-4px) scale(1.03);
+          }
+          @media (max-width: 880px) {
+            .feature-card { padding: 18px; }
+            .feature-icon { width: 60px; height: 60px; font-size: 26px; }
+            .container { padding-left: 16px; padding-right: 16px; }
+            .feature-card { margin-bottom: 8px; }
+            .feature-grid { grid-template-columns: 1fr !important; }
+          }
+        `}</style>
+
+      </div>
+    </section>
+  );
 }
 
 // ── PRODUCTS ──────────────────────────────────────────────────
